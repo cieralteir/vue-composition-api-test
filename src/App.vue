@@ -1,20 +1,27 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <div>
+    <button @click="increment">{{ count }}</button>
+    <increment />
   </div>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import { useIncrement } from "./compositions/use-increment";
+import Increment from "./components/Increment.vue";
 
-export default Vue.extend({
-  name: "App",
+export default {
   components: {
-    HelloWorld
+    Increment
+  },
+  setup() {
+    const { count, increment } = useIncrement();
+
+    return {
+      count,
+      increment
+    };
   }
-});
+};
 </script>
 
 <style>

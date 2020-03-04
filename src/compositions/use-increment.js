@@ -1,0 +1,14 @@
+import { ref } from "@vue/composition-api";
+
+export function useIncrement() {
+  const count = ref(0);
+
+  function increment() {
+    count.value++;
+  }
+
+  return {
+    count,
+    increment
+  };
+}
